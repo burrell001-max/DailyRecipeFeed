@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Bites | Rotator & Recipe Feed</title>
+    <style>
+        /* Modern Reset & Dark Theme Base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Header Navigation */
+        header {
+            width: 100%;
+            max-width: 1000px;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #b3b3b3;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: #a4a44d;
+        }
+
+        /* Dynamic Content Wrapper */
+        .page-content {
+            width: 100%;
+            max-width: 1000px;
+            display: none;
+        }
+
+        .page-content.active-page {
+            display: block;
+        }
+
+        /* Recipe Grid Layout (Home) */
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .recipe-card {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .recipe-card:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .image-container {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #222;
+            margin-bottom: 12px;
+        }
+
+        .recipe-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .recipe-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .recipe-meta {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #a4a44d;
+            margin-bottom: 6px;
+            letter-spacing: 1.5px;
+        }
+
+        .recipe-title {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #ffffff;
+            margin-bottom: 8px;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .recipe-description {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #b3b3b3;
+            max-width: 90%;
+        }
+
+        /* Text Page Styling */
+        .text-container {
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.7;
+            color: #d4d4d4;
+        }
+
+        .text-container h1 {
+            color: #ffffff;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-left: 4px solid #a4a44d;
+            padding-left: 12px;
+        }
+
+        .text-container h2 {
+            color: #ffffff;
+            font-size: 20px;
+            margin: 25px 0 10px 0;
+        }
+
+        .text-container p {
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        /* FAQ Styling */
+        .faq-item {
+            background-color: #1a1a1a;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border: 1px solid #252525;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #b3b3b3;
+            text-transform: uppercase;
+        }
+
+        .form-group input, .form-group textarea {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 12px;
+            color: #ffffff;
+            font-size: 15px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #a4a44d;
+        }
+
+        .submit-btn {
+            background-color: #a4a44d;
+            color: #121212;
+            border: none;
+            padding: 14px;
+            font-weight: 700;
+            font-size: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #c2c261;
+        }
+
+        footer {
+            width: 100%;
+            max-width: 1000px;
+            margin-top: auto;
+            padding: 40px 0 20px 0;
+            border-top: 1px solid #222;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 12px;
+        }
+
+        footer a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #999;
+        }
+
+        @media (max-width: 650px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .recipe-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo" onclick="navigateTo('home')">DAILY BITES</div>
+        <nav>
+            <a onclick="navigateTo('home')" id="nav-home" class="active">Home</a>
+            <a onclick="navigateTo('about')" id="nav-about">About Us</a>
+            <a onclick="navigateTo('faq')" id="nav-faq">FAQs</a>
+            <a onclick="navigateTo('contact')" id="nav-contact">Contact</a>
+        </nav>
+    </header>
+
+    <div id="page-home" class="page-content active-page">
+        <main class="recipe-grid" id="recipe-feed"></main>
+    </div>
+
+    <div id="page-about" class="page-content">
+        <div class="text-container">
+            <h1>About Daily Bites</h1>
+            <p>Welcome to Daily Bites, your straightforward destination for simple, time-tested home cooking. We believe that good food shouldn't require confusing, endless scrolling or searching through hours of social feeds.</p>
+            <p>Every single day, our automated menu system curates a fresh rotation of classic comfort foods, fast weeknight dinner fixes, savory side dishes, and indulgent desserts hand-picked directly from our deep master library of over 100 favorite recipes.</p>
+            <h2>Why Only a Few Recipes a Day?</h2>
+            <p>Decision fatigue is real, especially at the end of a long day when you are figuring out what to cook. By serving a limited daily rotation, we give you immediate inspiration. If you see something you love, tap the title and cook it right away!</p>
+        </div>
+    </div>
+
+    <div id="page-faq" class="page-content">
+        <div class="text-container">
+            <h1>Frequently Asked Questions</h1>
+            <div class="faq-item">
+                <div class="faq-question">How does the recipe rotation work?</div>
+                <p>Our platform uses smart calendar synchronization. Every day at midnight, the algorithm automatically changes the selection, picking the next set of recipes out of our curated 100-item index.</p>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can I search for an old recipe I saw yesterday?</div>
+                <p>To keep our interface clean and minimalist, we showcase the featured dishes of the day. If you miss a recipe, don't worry! It remains securely stored in our rotation index and will swing back to the spotlight as the calendar cycles forward.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-contact" class="page-content">
+        <div class="text-container">
+            <h1>Contact Us</h1>
+            <p>Have a question or feedback? Drop us a line below, and our team will get back to you as soon as possible.</p>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent!');">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Your Email Address</label>
+                    <input type="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="6" required placeholder="Write your message here..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="page-privacy" class="page-content">
+        <div class="text-container">
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is fundamentally important to us. Daily Bites does not deploy tracking cookies or collect personal behavioral data. Our rotation algorithm runs entirely in your local browser code using standard device calendar times, meaning your choices remain private to your local system.</p>
+        </div>
+    </div>
+
+    <footer>
+        <span>&copy; 2026 Daily Bites. All rights reserved.</span>
+        <a onclick="navigateTo('privacy')" style="cursor:pointer;">Privacy Policy</a>
+    </footer>
+
+    <script src="recipes.js"></script>
+    <script>
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active-page'));
+            document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+            
+            const target = document.getElementById(`page-${pageId}`);
+            if (target) target.classList.add('active-page');
+            
+            const navLink = document.getElementById(`nav-${pageId}`);
+            if (navLink) navLink.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function getDailyRecipes(catalog, displayCount = 2) {
+            const today = new Date();
+            const daySeed = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
+            let selectedRecipes = [];
+            for (let i = 0; i < displayCount; i++) {
+                const recipeIndex = (daySeed + i) % catalog.length;
+                selectedRecipes.push(catalog[recipeIndex]);
+            }
+            return selectedRecipes;
+        }
+
+        function renderFeed() {
+            const feedContainer = document.getElementById('recipe-feed');
+            // If recipes.js failed to load, fall back safely
+            const catalog = (typeof recipeCatalog !== 'undefined') ? recipeCatalog : [];
+            const todaysRecipes = getDailyRecipes(catalog, 2);
+
+            feedContainer.innerHTML = todaysRecipes.map(recipe => `
+                <a href="${recipe.url}" class="recipe-card">
+                    <div class="image-container">
+                        <img src="${recipe.img}" alt="${recipe.title}" class="recipe-image">
+                    </div>
+                    <div class="recipe-details">
+                        <div class="recipe-meta">${recipe.category}</div>
+                        <h2 class="recipe-title">${recipe.title}</h2>
+                        <p class="recipe-description">${recipe.description}</p>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        window.onload = renderFeed;
+    </script>
+</body>
+</html>
