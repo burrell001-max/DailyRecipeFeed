@@ -80,12 +80,12 @@
             color: #f05a28;
         }
 
-        /* 1. Search Box Bar Layout (Screenshot 2026-06-26 183302_2.jpg) */
+        /* 1. Search Box Bar Layout */
         .search-utility-box {
             background: #ffffff;
             border: 1px solid #dcdad1;
             padding: 25px;
-            margin-bottom: 35px;
+            margin-bottom: 20px; /* Reduced to sit neatly above categories */
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
@@ -135,6 +135,51 @@
             font-weight: bold;
             text-decoration: none;
             border-radius: 2px;
+        }
+
+        /* NEW: Category Navigation Ribbon (Screenshot 2026-06-26 190346.png) */
+        .category-ribbon {
+            background: #ffffff;
+            border: 1px solid #e2e0d9;
+            padding: 15px 20px;
+            margin-bottom: 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow-x: auto;
+            gap: 15px;
+        }
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #333333;
+            font-size: 13px;
+            font-weight: 700;
+            min-width: 80px;
+            text-align: center;
+            transition: color 0.2s;
+        }
+        .category-item:hover {
+            color: #f05a28;
+        }
+        .category-icon-circle {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: #fdfbf7;
+            border: 1px solid #e2e0d9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 8px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .category-item:hover .category-icon-circle {
+            transform: scale(1.05);
+            border-color: #f05a28;
         }
 
         /* Premium 3-Column Card Grids */
@@ -196,7 +241,7 @@
         .stars-row { display: flex; align-items: center; gap: 4px; font-size: 13px; color: #e67e22; margin-bottom: 4px; }
         .stars-row span { color: #767676; font-size: 12px; }
 
-        /* 2. Asymmetric Split Banner Layout (Screenshot 2026-06-26 183210_2.jpg) */
+        /* 2. Asymmetric Split Banner Layout */
         .asymmetric-banner-row {
             display: grid;
             grid-template-columns: 1fr 1.6fr;
@@ -235,7 +280,7 @@
         .hero-banner-title { font-size: 24px; font-weight: 800; margin-top: 15px; color: #1a1a1a; }
         .hero-banner-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #eaeaea; }
 
-        /* 3. Trending Now 2x2 Grid Layout (Screenshot 2026-06-26 183455_2.jpg) */
+        /* 3. Trending Now 2x2 Layout Grid */
         .trending-highlight-title {
             font-size: 26px;
             font-weight: 800;
@@ -264,7 +309,7 @@
         .trending-heading { font-size: 16px; font-weight: 700; line-height: 1.3; color: #1a1a1a; }
         .trending-heading:hover { text-decoration: underline; }
 
-        /* 4. Horizontal Features Layout Stream (Screenshot 2026-06-26 183234_2.png) */
+        /* 4. Horizontal Features Layout Stream */
         .horizontal-feature-stream {
             display: flex;
             flex-direction: column;
@@ -283,7 +328,7 @@
         .feature-strip-img { width: 220px; height: 130px; object-fit: cover; background: #ddd; flex-shrink: 0; }
         .feature-strip-title { font-size: 20px; font-weight: 800; line-height: 1.3; text-decoration: underline; color: #1a1a1a; }
 
-        /* 5. MyRecipes Tray Layout Element (Screenshot 2026-06-26 183527_2.png) */
+        /* 5. MyRecipes Tray Layout Element */
         .myrecipes-tray-wrap {
             background: #f7f6f0;
             padding: 30px 20px;
@@ -341,7 +386,7 @@
         }
         .save-recipe-btn:hover { background: #f0f0f0; }
 
-        /* 6. Comprehensive Multi-Column Footer Layout (Screenshot 2026-06-26 183052_2.jpg) */
+        /* 6. Comprehensive Multi-Column Footer Layout */
         footer {
             width: 100%;
             background: #f0ede6;
@@ -413,7 +458,6 @@
 
     <div class="container">
 
-        <!-- 1. Search Box Bar Layout Row -->
         <div class="search-utility-box">
             <div class="search-input-zone">
                 <h2>🍳 What would you like to cook?</h2>
@@ -435,32 +479,54 @@
             </div>
         </div>
 
-        <!-- 2. Asymmetric Split Banner Layout Row -->
-        <h3 class="section-header">Summer Treats <span>→</span></h3>
-        <div class="asymmetric-banner-row">
-            <div class="banner-sidebar-list" id="asymmetric-sidebar">
-                <!-- Inner items generated dynamically -->
-            </div>
-            <div class="banner-hero-display" id="asymmetric-hero">
-                <!-- Main spotlight item injected dynamically -->
-            </div>
+        <div class="category-ribbon">
+            <a href="#" class="category-item">
+                <div class="category-icon-circle">💨</div>
+                <span>Air Fryer</span>
+            </a>
+            <a href="#" class="category-item">
+                <div class="category-icon-circle">⏱️</div>
+                <span>Slow Cooker</span>
+            </a>
+            <a href="#" class="category-item">
+                <div class="category-icon-circle">🍲</div>
+                <span>Soups</span>
+            </a>
+            <a href="#" class="category-item">
+                <div class="category-icon-circle">🍕</div>
+                <span>Dinner</span>
+            </a>
+            <a href="#" class="category-item">
+                <div class="category-icon-circle">🍪</div>
+                <span>Desserts</span>
+            </a>
+            <a href="#" class="category-item">
+                <div class="category-icon-circle">🥬</div>
+                <span>Healthy</span>
+            </a>
+            <a href="#" class="category-item">
+                <div class="category-icon-circle">🍹</div>
+                <span>Drinks</span>
+            </a>
         </div>
 
-        <!-- 3. Dynamic Grid Row: Seasonal Picks -->
+        <h3 class="section-header">Summer Treats <span>→</span></h3>
+        <div class="asymmetric-banner-row">
+            <div class="banner-sidebar-list" id="asymmetric-sidebar"></div>
+            <div class="banner-hero-display" id="asymmetric-hero"></div>
+        </div>
+
         <h3 class="section-header">Seasonal Picks <span>→</span></h3>
         <main class="standard-3-grid" id="seasonal-picks-feed"></main>
 
-        <!-- 4. Trending Now 2x2 Layout Grid Row -->
         <div>
             <h3 class="trending-highlight-title">Trending Now</h3>
             <div class="trending-2x2-box" id="trending-feed"></div>
         </div>
 
-        <!-- 5. Dynamic Grid Row: Cookout Classics -->
         <h3 class="section-header">Cookout Classics <span>→</span></h3>
         <main class="standard-3-grid" id="cookout-classics-feed"></main>
 
-        <!-- 6. MyRecipes Ribbon Layout Tray Row -->
         <div class="myrecipes-tray-wrap">
             <div class="myrecipes-brand-header">
                 <div class="brand-lbl">♥ my<span>recipes</span></div>
@@ -469,13 +535,11 @@
             <div class="myrecipes-grid" id="myrecipes-feed"></div>
         </div>
 
-        <!-- 7. Horizontal Features Layout Stream Row -->
         <h3 class="section-header">Features <span>→</span></h3>
         <div class="horizontal-feature-stream" id="features-feed"></div>
 
     </div>
 
-    <!-- 8. Comprehensive Multi-Column Footer Layout -->
     <footer>
         <div class="footer-inner">
             <div class="footer-brand-side">
@@ -521,21 +585,14 @@
 
     <script src="recipes.js"></script>
     <script>
-        // Standard structural engine assigning catalog indices cleanly across components
         function buildPortalLayout() {
             const catalog = (typeof recipeCatalog !== 'undefined') ? recipeCatalog : [];
-            
-            if(catalog.length === 0) {
-                console.warn("Recipe catalog array is currently empty or unmounted.");
-                return;
-            }
+            if(catalog.length === 0) return;
 
-            // 1. Render Asymmetric Section Components (Left text strips, Right Hero Display)
             const sideList = document.getElementById('asymmetric-sidebar');
             const heroBox = document.getElementById('asymmetric-hero');
             
-            const sidebarRecipes = catalog.slice(0, 4);
-            sideList.innerHTML = sidebarRecipes.map(r => `
+            sideList.innerHTML = catalog.slice(0, 4).map(r => `
                 <a href="${r.url}" class="sidebar-item-link">
                     <img src="${r.img}" class="sidebar-thumb" alt="${r.title}">
                     <div class="sidebar-text">${r.title}</div>
@@ -549,7 +606,6 @@
                 <p style="font-size: 14px; color: #555; margin-top: 8px;">${heroItem.description}</p>
             `;
 
-            // Helper to generate typical 3-Column layout matrices
             function fillGrid(elementId, items) {
                 const target = document.getElementById(elementId);
                 if (!target) return;
@@ -568,14 +624,11 @@
                 `).join('');
             }
 
-            // Populating Seasonal Picks Grid & Cookout Classics
             fillGrid('seasonal-picks-feed', catalog.slice(5, 8));
             fillGrid('cookout-classics-feed', catalog.slice(8, 11));
 
-            // 2. Render Trending Now 2x2 Grid Component Layout
             const trendingContainer = document.getElementById('trending-feed');
-            const trendingItems = catalog.slice(11, 15);
-            trendingContainer.innerHTML = trendingItems.map(r => `
+            trendingContainer.innerHTML = catalog.slice(11, 15).map(r => `
                 <a href="${r.url}" class="trending-row-card">
                     <img src="${r.img}" class="trending-img" alt="${r.title}">
                     <div class="trending-info">
@@ -585,10 +638,8 @@
                 </a>
             `).join('');
 
-            // 3. Render MyRecipes Tray Component Layout Row
             const myrecipesContainer = document.getElementById('myrecipes-feed');
-            const myrecipesItems = catalog.slice(0, 4);
-            myrecipesContainer.innerHTML = myrecipesItems.map(r => `
+            myrecipesContainer.innerHTML = catalog.slice(0, 4).map(r => `
                 <div class="myrecipes-card">
                     <div class="img-box">
                         <img src="${r.img}" alt="${r.title}">
@@ -602,10 +653,8 @@
                 </div>
             `).join('');
 
-            // 4. Render Horizontal Feature Item List Link Stream
             const featureContainer = document.getElementById('features-feed');
-            const featureItems = catalog.slice(4, 7);
-            featureContainer.innerHTML = featureItems.map(r => `
+            featureContainer.innerHTML = catalog.slice(4, 7).map(r => `
                 <a href="${r.url}" class="feature-strip-item">
                     <img src="${r.img}" class="feature-strip-img" alt="${r.title}">
                     <div class="feature-strip-title">${r.title}</div>
