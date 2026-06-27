@@ -57,7 +57,7 @@
         }
         nav a:hover { color: #f05a28; }
 
-        /* Main Container layout structural blocks */
+        /* Main Container */
         .container {
             width: 100%;
             max-width: 1200px;
@@ -75,17 +75,18 @@
             gap: 8px;
             border-bottom: 1px solid #e2e0d9;
             padding-bottom: 10px;
+            margin-top: 20px;
         }
         .section-header span {
             color: #f05a28;
         }
 
-        /* 1. Search Box Bar Layout */
+        /* Search Box Bar Layout */
         .search-utility-box {
             background: #ffffff;
             border: 1px solid #dcdad1;
             padding: 25px;
-            margin-bottom: 20px; /* Reduced to sit neatly above categories */
+            margin-bottom: 20px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
@@ -137,7 +138,7 @@
             border-radius: 2px;
         }
 
-        /* NEW: Category Navigation Ribbon (Screenshot 2026-06-26 190346.png) */
+        /* Category Navigation Ribbon */
         .category-ribbon {
             background: #ffffff;
             border: 1px solid #e2e0d9;
@@ -161,9 +162,7 @@
             text-align: center;
             transition: color 0.2s;
         }
-        .category-item:hover {
-            color: #f05a28;
-        }
+        .category-item:hover { color: #f05a28; }
         .category-icon-circle {
             width: 55px;
             height: 55px;
@@ -197,6 +196,8 @@
             color: inherit;
             display: flex;
             flex-direction: column;
+            border: 1px solid #e2e0d9;
+            padding-bottom: 12px;
         }
         .img-box {
             position: relative;
@@ -221,7 +222,7 @@
             font-size: 16px;
             color: #444;
         }
-        .card-details { padding: 12px 0; }
+        .card-details { padding: 12px; }
         .card-meta {
             font-size: 11px;
             font-weight: 800;
@@ -241,7 +242,7 @@
         .stars-row { display: flex; align-items: center; gap: 4px; font-size: 13px; color: #e67e22; margin-bottom: 4px; }
         .stars-row span { color: #767676; font-size: 12px; }
 
-        /* 2. Asymmetric Split Banner Layout */
+        /* Asymmetric Split Banner Layout */
         .asymmetric-banner-row {
             display: grid;
             grid-template-columns: 1fr 1.6fr;
@@ -280,11 +281,12 @@
         .hero-banner-title { font-size: 24px; font-weight: 800; margin-top: 15px; color: #1a1a1a; }
         .hero-banner-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #eaeaea; }
 
-        /* 3. Trending Now 2x2 Layout Grid */
+        /* Trending Now Layout */
         .trending-highlight-title {
             font-size: 26px;
             font-weight: 800;
             margin-bottom: 25px;
+            margin-top: 20px;
             background: linear-gradient(180deg, transparent 70%, #f5a623 70%);
             display: inline-block;
             padding-right: 15px;
@@ -302,6 +304,9 @@
             gap: 16px;
             text-decoration: none;
             color: inherit;
+            background: #fff;
+            border: 1px solid #e2e0d9;
+            padding: 10px;
         }
         .trending-img { width: 140px; height: 105px; object-fit: cover; flex-shrink: 0; background: #eaeaea; }
         .trending-info { display: flex; flex-direction: column; justify-content: center; }
@@ -309,7 +314,7 @@
         .trending-heading { font-size: 16px; font-weight: 700; line-height: 1.3; color: #1a1a1a; }
         .trending-heading:hover { text-decoration: underline; }
 
-        /* 4. Horizontal Features Layout Stream */
+        /* Horizontal Features Layout Stream */
         .horizontal-feature-stream {
             display: flex;
             flex-direction: column;
@@ -324,11 +329,14 @@
             text-decoration: none;
             color: inherit;
             align-items: center;
+            background: #fff;
+            border: 1px solid #e2e0d9;
+            padding: 15px;
         }
         .feature-strip-img { width: 220px; height: 130px; object-fit: cover; background: #ddd; flex-shrink: 0; }
         .feature-strip-title { font-size: 20px; font-weight: 800; line-height: 1.3; text-decoration: underline; color: #1a1a1a; }
 
-        /* 5. MyRecipes Tray Layout Element */
+        /* MyRecipes Tray Layout Element */
         .myrecipes-tray-wrap {
             background: #f7f6f0;
             padding: 30px 20px;
@@ -386,7 +394,7 @@
         }
         .save-recipe-btn:hover { background: #f0f0f0; }
 
-        /* 6. Comprehensive Multi-Column Footer Layout */
+        /* Footer Layout */
         footer {
             width: 100%;
             background: #f0ede6;
@@ -583,34 +591,41 @@
         </div>
     </footer>
 
-    <script src="recipes.js"></script>
+    <script src="./recipes.js"></script>
     <script>
         function buildPortalLayout() {
             const catalog = (typeof recipeCatalog !== 'undefined') ? recipeCatalog : [];
-            if(catalog.length === 0) return;
+            if(catalog.length === 0) {
+                console.warn("Recipe catalog array is empty or not loaded.");
+                return;
+            }
 
             const sideList = document.getElementById('asymmetric-sidebar');
             const heroBox = document.getElementById('asymmetric-hero');
             
-            sideList.innerHTML = catalog.slice(0, 4).map(r => `
-                <a href="${r.url}" class="sidebar-item-link">
-                    <img src="${r.img}" class="sidebar-thumb" alt="${r.title}">
-                    <div class="sidebar-text">${r.title}</div>
-                </a>
-            `).join('');
+            if (sideList) {
+                sideList.innerHTML = catalog.slice(0, 4).map(r => `
+                    <a href="${r.url}" class="sidebar-item-link" target="_blank">
+                        <img src="${r.img}" class="sidebar-thumb" alt="${r.title}">
+                        <div class="sidebar-text">${r.title}</div>
+                    </a>
+                `).join('');
+            }
 
-            const heroItem = catalog[4] || catalog[0];
-            heroBox.innerHTML = `
-                <img src="${heroItem.img}" class="hero-banner-img" alt="${heroItem.title}">
-                <h2 class="hero-banner-title">${heroItem.title}</h2>
-                <p style="font-size: 14px; color: #555; margin-top: 8px;">${heroItem.description}</p>
-            `;
+            if (heroBox) {
+                const heroItem = catalog[4] || catalog[0];
+                heroBox.innerHTML = `
+                    <img src="${heroItem.img}" class="hero-banner-img" alt="${heroItem.title}">
+                    <h2 class="hero-banner-title">${heroItem.title}</h2>
+                    <p style="font-size: 14px; color: #555; margin-top: 8px;">${heroItem.description}</p>
+                `;
+            }
 
             function fillGrid(elementId, items) {
                 const target = document.getElementById(elementId);
                 if (!target) return;
                 target.innerHTML = items.map(r => `
-                    <a href="${r.url}" class="premium-card">
+                    <a href="${r.url}" class="premium-card" target="_blank">
                         <div class="img-box">
                             <img src="${r.img}" alt="${r.title}">
                             <div class="heart-toggle">♡</div>
@@ -625,41 +640,47 @@
             }
 
             fillGrid('seasonal-picks-feed', catalog.slice(5, 8));
-            fillGrid('cookout-classics-feed', catalog.slice(8, 11));
+            fillGrid('cookout-classics-feed', catalog.slice(0, 3));
 
             const trendingContainer = document.getElementById('trending-feed');
-            trendingContainer.innerHTML = catalog.slice(11, 15).map(r => `
-                <a href="${r.url}" class="trending-row-card">
-                    <img src="${r.img}" class="trending-img" alt="${r.title}">
-                    <div class="trending-info">
-                        <div class="trending-meta">${r.category}</div>
-                        <div class="trending-heading">${r.title}</div>
-                    </div>
-                </a>
-            `).join('');
+            if (trendingContainer) {
+                trendingContainer.innerHTML = catalog.slice(4, 8).map(r => `
+                    <a href="${r.url}" class="trending-row-card" target="_blank">
+                        <img src="${r.img}" class="trending-img" alt="${r.title}">
+                        <div class="trending-info">
+                            <div class="trending-meta">${r.category}</div>
+                            <div class="trending-heading">${r.title}</div>
+                        </div>
+                    </a>
+                `).join('');
+            }
 
             const myrecipesContainer = document.getElementById('myrecipes-feed');
-            myrecipesContainer.innerHTML = catalog.slice(0, 4).map(r => `
-                <div class="myrecipes-card">
-                    <div class="img-box">
-                        <img src="${r.img}" alt="${r.title}">
-                        <div class="overlay-badge">Daily Pick</div>
+            if (myrecipesContainer) {
+                myrecipesContainer.innerHTML = catalog.slice(0, 4).map(r => `
+                    <div class="myrecipes-card">
+                        <div class="img-box">
+                            <img src="${r.img}" alt="${r.title}">
+                            <div class="overlay-badge">Daily Pick</div>
+                        </div>
+                        <div class="card-details" style="flex-grow: 1;">
+                            <h4 class="card-title" style="font-size: 15px;">${r.title}</h4>
+                            <div class="stars-row">★★★★★</div>
+                        </div>
+                        <button class="save-recipe-btn" onclick="window.open('${r.url}', '_blank')">Save Recipe ♡</button>
                     </div>
-                    <div class="card-details" style="flex-grow: 1;">
-                        <h4 class="card-title" style="font-size: 15px;">${r.title}</h4>
-                        <div class="stars-row">★★★★★</div>
-                    </div>
-                    <button class="save-recipe-btn">Save Recipe ♡</button>
-                </div>
-            `).join('');
+                `).join('');
+            }
 
             const featureContainer = document.getElementById('features-feed');
-            featureContainer.innerHTML = catalog.slice(4, 7).map(r => `
-                <a href="${r.url}" class="feature-strip-item">
-                    <img src="${r.img}" class="feature-strip-img" alt="${r.title}">
-                    <div class="feature-strip-title">${r.title}</div>
-                </a>
-            `).join('');
+            if (featureContainer) {
+                featureContainer.innerHTML = catalog.slice(7, 10).map(r => `
+                    <a href="${r.url}" class="feature-strip-item" target="_blank">
+                        <img src="${r.img}" class="feature-strip-img" alt="${r.title}">
+                        <div class="feature-strip-title">${r.title}</div>
+                    </a>
+                `).join('');
+            }
         }
 
         window.onload = buildPortalLayout;
