@@ -1,247 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Details | DailyRecipeFeed</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-        }
+function renderRecipeDetails() {
+    const container = document.getElementById('content-container');
+    const catalog = (typeof recipeCatalog !== 'undefined') ? recipeCatalog : [];
 
-        body {
-            background-color: #faf9f6;
-            color: #222222;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
+    // 1. Grab the "id" string out of the browser URL bar (?id=ramen-salad)
+    const urlParams = new URLSearchParams(window.location.search);
+    const recipeId = urlParams.get('id');
 
-        /* Header Layout matching Index */
-        header {
-            width: 100%;
-            background: #ffffff;
-            display: flex;
-            justify-content: center;
-            border-bottom: 1px solid #e2e0d9;
-        }
-        .header-inner {
-            width: 100%;
-            max-width: 1200px;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            color: #f05a28;
-            font-size: 32px;
-            font-weight: 900;
-            letter-spacing: -1.5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .logo span { color: #f5a623; }
-        nav { display: flex; gap: 24px; }
-        nav a {
-            text-decoration: none;
-            color: #444444;
-            font-weight: 700;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-        nav a:hover { color: #f05a28; }
+    if (!recipeId || catalog.length === 0) {
+        showErrorLayout(container);
+        return;
+    }
 
-        /* Main Workspace Layout */
-        .container {
-            width: 100%;
-            max-width: 900px;
-            padding: 40px 20px;
-        }
+    // 2. Locate the corresponding item inside the recipes array
+    const item = catalog.find(r => r.id === recipeId || (r.url && r.url.includes(`id=${recipeId}`)));
 
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #f05a28;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-        }
-        .back-link:hover { text-decoration: underline; }
+    if (!item) {
+        showErrorLayout(container);
+        return;
+    }
 
-        .recipe-header {
-            margin-bottom: 25px;
-        }
-        .recipe-category {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #767676;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-        }
-        .recipe-title {
-            font-size: 36px;
-            font-weight: 800;
-            color: #1a1a1a;
-            line-height: 1.2;
-            margin-bottom: 10px;
-        }
-        .stars-row { display: flex; align-items: center; gap: 6px; font-size: 15px; color: #e67e22; }
-        .stars-row span { color: #767676; font-size: 13px; }
+    // Update Browser Title Bar dynamically
+    document.title = `${item.title} | DailyRecipeFeed`;
 
-        .recipe-hero-img {
-            width: 100%;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-            border: 1px solid #e2e0d9;
-            background: #eaeaea;
-            margin-bottom: 30px;
-        }
-
-        .recipe-body-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            background: #ffffff;
-            border: 1px solid #e2e0d9;
-            padding: 35px;
-        }
-
-        .recipe-description {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #444;
-            padding-bottom: 25px;
-            border-bottom: 1px solid #e2e0d9;
-            margin-bottom: 10px;
-            font-style: italic;
-        }
-
-        .section-title {
-            font-size: 22px;
-            font-weight: 800;
-            color: #1a1a1a;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #fdfbf7;
-            padding-bottom: 5px;
-        }
-
-        /* Fallback message container */
-        .error-message {
-            text-align: center;
-            padding: 60px 20px;
-            background: white;
-            border: 1px solid #e2e0d9;
-        }
-        .error-message h2 { font-size: 24px; color: #1a1a1a; margin-bottom: 10px; }
-        .error-message p { color: #666; margin-bottom: 20px; }
-
-        footer {
-            width: 100%;
-            background: #f0ede6;
-            border-top: 1px solid #dcdad1;
-            display: flex;
-            justify-content: center;
-            padding: 30px 20px;
-            margin-top: auto;
-            font-size: 13px;
-            color: #666;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="header-inner">
-            <a class="logo" href="index.html">DailyRecipe<span>Feed</span></a>
-            <nav>
-                <a href="index.html">Home</a>
-            </nav>
+    // 3. Inject full layout structure safely with clean default fallbacks
+    container.innerHTML = `
+        <a href="index.html" class="back-link">← Back to Recipes</a>
+        
+        <div class="recipe-header">
+            <div class="recipe-category">${item.category || 'Recipe'}</div>
+            <h1 class="recipe-title">${item.title}</h1>
+            <div class="stars-row">★★★★★ <span>(${item.reviews || '24'} Reviews)</span></div>
         </div>
-    </header>
 
-    <div class="container" id="content-container">
+        <img src="${item.img}" class="recipe-hero-img" alt="${item.title}">
+
+        <div class="recipe-body-grid">
+            ${item.description ? `<p class="recipe-description">"${item.description}"</p>` : ''}
+            
+            <div style="margin-bottom: 25px;">
+                <h3 class="section-title">Ingredients</h3>
+                <ul style="color: #444; line-height: 1.8; padding-left: 20px;">
+                    ${item.ingredients && item.ingredients.length > 0 
+                        ? item.ingredients.map(ing => `<li>${ing}</li>`).join('') 
+                        : '<li>Ingredients coming soon!</li>'
+                    }
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="section-title">Directions</h3>
+                <ol style="color: #444; line-height: 1.8; padding-left: 20px;">
+                    ${item.directions && item.directions.length > 0 
+                        ? item.directions.map(step => `<li>${step}</li>`).join('') 
+                        : '<li>Directions coming soon!</li>'
+                    }
+                </ol>
+            </div>
+        </div>
+    `;
+}
+
+function showErrorLayout(element) {
+    element.innerHTML = `
+        <a href="index.html" class="back-link">← Back to Home</a>
         <div class="error-message">
-            <h2>Loading Recipe...</h2>
-            <p>Gathering fresh ingredients details from our catalog.</p>
+            <h2>Recipe Not Found</h2>
+            <p>We couldn't track down that specific formula. Double-check your pathing details inside the data configurations file.</p>
         </div>
-    </div>
+    `;
+}
 
-    <footer>
-        <div>&copy; 2026 DailyRecipeFeed portal. All rights reserved.</div>
-    </footer>
-
-    <script src="recipes.js"></script>
-    <script>
-        function renderRecipeDetails() {
-            const container = document.getElementById('content-container');
-            const catalog = (typeof recipeCatalog !== 'undefined') ? recipeCatalog : [];
-
-            // 1. Grab the "id" string out of the browser URL bar (?id=ramen-salad)
-            const urlParams = new URLSearchParams(window.location.search);
-            const recipeId = urlParams.get('id');
-
-            if (!recipeId || catalog.length === 0) {
-                showErrorLayout(container);
-                return;
-            }
-
-            // 2. Locate the corresponding item inside the recipes array
-            // Matches against either an assigned explicit .id property, or tests against the URL string filename field
-            const item = catalog.find(r => r.id === recipeId || (r.url && r.url.includes(`id=${recipeId}`)));
-
-            if (!item) {
-                showErrorLayout(container);
-                return;
-            }
-
-            // Update Browser Title Bar dynamically
-            document.title = `${item.title} | DailyRecipeFeed`;
-
-            // 3. Inject full layout structure safely with clean default fallbacks
-            container.innerHTML = `
-                <a href="index.html" class="back-link">← Back to Recipes</a>
-                
-                <div class="recipe-header">
-                    <div class="recipe-category">${item.category || 'Recipe'}</div>
-                    <h1 class="recipe-title">${item.title}</h1>
-                    <div class="stars-row">★★★★★ <span>(${item.reviews || '24'} Reviews)</span></div>
-                </div>
-
-                <img src="${item.img}" class="recipe-hero-img" alt="${item.title}">
-
-                <div class="recipe-body-grid">
-                    ${item.description ? `<p class="recipe-description">"${item.description}"</p>` : ''}
-                    
-                    <div>
-                        <h3 class="section-title">Ingredients</h3>
-                        <p style="color: #555; line-height: 1.6;">
-                            Premium catalog recipe directions are structured here. Add specific target values into your array models for unique item rendering lists!
-                        </p>
-                    </div>
-                </div>
-            `;
-        }
-
-        function showErrorLayout(element) {
-            element.innerHTML = `
-                <a href="index.html" class="back-link">← Back to Home</a>
-                <div class="error-message">
-                    <h2>Recipe Not Found</h2>
-                    <p>We couldn't track down that specific formula. Double-check your pathing details inside the data configurations file.</p>
-                </div>
-            `;
-        }
-
-        window.onload = renderRecipeDetails;
-    </script>
-</body>
-</html>
+window.onload = renderRecipeDetails;
