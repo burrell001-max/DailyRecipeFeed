@@ -7,22 +7,8 @@ const recipeCatalog = [
         url: "recipe-details.html?id=ramen-salad",
         reviews: "42",
         description: "A fresh, vibrant salad packed with crunchy ramen noodles, fresh cabbage, and a tangy sweet vinaigrette dressing.",
-        ingredients: [
-            "2 packages instant ramen noodles (discard seasoning packets)",
-            "1 bag (14 oz) shredded coleslaw mix",
-            "1 cup sliced almonds, toasted",
-            "1/2 cup sunflower seeds",
-            "3 green onions, chopped",
-            "1/4 cup olive oil",
-            "3 tbsp rice vinegar",
-            "2 tbsp sugar"
-        ],
-        directions: [
-            "Crush the uncooked ramen noodles into small, bite-sized pieces inside the bag.",
-            "In a large serving bowl, combine the crushed noodles, coleslaw mix, toasted almonds, sunflower seeds, and green onions.",
-            "In a small jar, whisk together the olive oil, rice vinegar, and sugar until the sugar completely dissolves.",
-            "Drizzle the dressing over the salad right before serving and toss well to combine while crunchy."
-        ]
+        ingredients: ["2 packages instant ramen noodles (discard seasoning)", "1 bag (14 oz) shredded coleslaw mix", "1 cup sliced almonds, toasted", "1/2 cup sunflower seeds", "3 green onions, chopped", "1/4 cup olive oil", "3 tbsp rice vinegar", "2 tbsp sugar"],
+        directions: ["Crush the uncooked ramen noodles into small pieces.", "Combine noodles, coleslaw mix, almonds, sunflower seeds, and green onions in a large bowl.", "Whisk olive oil, rice vinegar, and sugar in a small jar until sugar dissolves.", "Drizzle dressing over salad right before serving and toss well."]
     },
     {
         id: "air-fryer-chicken",
@@ -32,22 +18,8 @@ const recipeCatalog = [
         url: "recipe-details.html?id=air-fryer-chicken",
         reviews: "128",
         description: "Perfectly seasoned chicken thighs with an incredibly crispy skin and juicy, tender center made right in your air fryer.",
-        ingredients: [
-            "4 bone-in, skin-on chicken thighs",
-            "1 tbsp olive oil",
-            "1 tsp garlic powder",
-            "1 tsp onion powder",
-            "1 tsp smoked paprika",
-            "1/2 tsp salt",
-            "1/4 tsp black pepper"
-        ],
-        directions: [
-            "Preheat your air fryer to 380°F (193°C).",
-            "Pat the chicken thighs completely dry with a paper towel, then coat them evenly with olive oil.",
-            "Mix the garlic powder, onion powder, smoked paprika, salt, and pepper in a small bowl, then rub it generously over the chicken.",
-            "Place the chicken thighs skin-side down in the air fryer basket and cook for 12 minutes.",
-            "Flip the thighs skin-side up and cook for an additional 10 to 12 minutes until the skin is beautifully crispy and internal temperature hits 165°F."
-        ]
+        ingredients: ["4 bone-in, skin-on chicken thighs", "1 tbsp olive oil", "1 tsp garlic powder", "1 tsp onion powder", "1 tsp smoked paprika", "1/2 tsp salt", "1/4 tsp black pepper"],
+        directions: ["Preheat air fryer to 380°F (193°C).", "Pat chicken thighs dry with a paper towel and coat evenly with olive oil.", "Mix seasonings in a small bowl and rub generously over the chicken.", "Place chicken skin-side down in basket and cook for 12 minutes.", "Flip skin-side up and cook for another 10-12 minutes until internal temp reaches 165°F."]
     },
     {
         id: "slow-cooker-pot-roast",
@@ -57,23 +29,8 @@ const recipeCatalog = [
         url: "recipe-details.html?id=slow-cooker-pot-roast",
         reviews: "95",
         description: "Tender, melt-in-your-mouth beef pot roast simmered low and slow all day with rich gravy, carrots, and potatoes.",
-        ingredients: [
-            "3 lb chuck roast",
-            "1 lb baby red potatoes, halved",
-            "4 large carrots, cut into 2-inch chunks",
-            "1 yellow onion, wedged",
-            "2 cups beef broth",
-            "2 tbsp Worcestershire sauce",
-            "2 cloves garlic, minced",
-            "1 packet onion soup mix"
-        ],
-        directions: [
-            "Place the halved potatoes, carrot chunks, and onion wedges into the bottom of your slow cooker.",
-            "Season the chuck roast with salt and pepper, then rest it directly on top of the vegetables.",
-            "In a measuring cup, whisk together the beef broth, Worcestershire sauce, minced garlic, and onion soup mix packet.",
-            "Pour the liquid mixture over the roast and vegetables.",
-            "Cover and cook on LOW for 8 hours (or HIGH for 5 hours) until the beef easily shreds with a fork."
-        ]
+        ingredients: ["3 lb chuck roast", "1 lb baby red potatoes, halved", "4 large carrots, cut into 2-inch chunks", "1 yellow onion, wedged", "2 cups beef broth", "2 tbsp Worcestershire sauce", "2 cloves garlic, minced", "1 packet onion soup mix"],
+        directions: ["Place halved potatoes, carrots, and onion wedges in the bottom of the slow cooker.", "Season chuck roast with salt and pepper, then rest it on top of the vegetables.", "Whisk beef broth, Worcestershire sauce, minced garlic, and onion soup mix together.", "Pour liquid over the roast, cover, and cook on LOW for 8 hours."]
     },
     {
         id: "tomato-basil-soup",
@@ -83,21 +40,8 @@ const recipeCatalog = [
         url: "recipe-details.html?id=tomato-basil-soup",
         reviews: "64",
         description: "A rich, silky tomato soup packed with fresh basil notes—perfect for pairing with a classic grilled cheese sandwich.",
-        ingredients: [
-            "2 cans (28 oz each) crushed tomatoes",
-            "4 tbsp unsalted butter",
-            "1 yellow onion, finely chopped",
-            "2 cups vegetable broth",
-            "1/2 cup heavy cream",
-            "1/4 cup fresh basil leaves, chopped",
-            "Salt and pepper to taste"
-        ],
-        directions: [
-            "Melt the butter in a large pot over medium heat, then sauté the chopped onion until soft and translucent (about 5 minutes).",
-            "Add the crushed tomatoes and vegetable broth to the pot, bringing it to a light simmer for 15 minutes.",
-            "Remove the pot from the heat and stir in the heavy cream and fresh chopped basil.",
-            "Use an immersion blender to puree the soup until entirely smooth, then season with salt and pepper before serving."
-        ]
+        ingredients: ["2 cans (28 oz each) crushed tomatoes", "4 tbsp unsalted butter", "1 yellow onion, finely chopped", "2 cups vegetable broth", "1/2 cup heavy cream", "1/4 cup fresh basil leaves, chopped", "Salt and pepper to taste"],
+        directions: ["Melt butter in a large pot over medium heat; sauté onion until translucent.", "Add crushed tomatoes and vegetable broth; simmer for 15 minutes.", "Remove from heat and stir in heavy cream and fresh chopped basil.", "Puree soup with an immersion blender until smooth, then season to taste."]
     },
     {
         id: "classic-pepperoni-pizza",
@@ -107,21 +51,8 @@ const recipeCatalog = [
         url: "recipe-details.html?id=classic-pepperoni-pizza",
         reviews: "210",
         description: "Skip delivery with this easy, perfect crispy homemade pizza loaded with zesty marinara, mozzarella, and spicy pepperoni.",
-        ingredients: [
-            "1 store-bought or homemade pizza dough ball",
-            "1/2 cup pizza sauce",
-            "1.5 cups shredded mozzarella cheese",
-            "1/4 cup pepperoni slices",
-            "1 tsp dried oregano",
-            "1 tbsp cornmeal (for the pan)"
-        ],
-        directions: [
-            "Preheat your oven as hot as it goes—ideally 500°F (260°C)—and sprinkle cornmeal on a baking sheet.",
-            "Stretch and roll out your pizza dough on a floured surface to a 12-inch circle, then transfer it onto the prepared baking sheet.",
-            "Spread the pizza sauce evenly across the dough, leaving a small border around the edges for the crust.",
-            "Top generously with shredded mozzarella, arrange the pepperoni slices, and sprinkle dried oregano over the top.",
-            "Bake for 10 to 12 minutes until the crust is golden brown and the cheese is bubbling and slightly browned."
-        ]
+        ingredients: ["1 pizza dough ball", "1/2 cup pizza sauce", "1.5 cups shredded mozzarella cheese", "1/4 cup pepperoni slices", "1 tsp dried oregano", "1 tbsp cornmeal"],
+        directions: ["Preheat oven to 500°F (260°C) and dust a baking sheet with cornmeal.", "Roll pizza dough out to a 12-inch circle and transfer to the baking sheet.", "Spread pizza sauce evenly, leaving a small border for the crust.", "Top with mozzarella, pepperoni slices, and a sprinkle of dried oregano.", "Bake for 10-12 minutes until the cheese is bubbling and crust is golden brown."]
     },
     {
         id: "chocolate-chip-cookies",
@@ -131,23 +62,8 @@ const recipeCatalog = [
         url: "recipe-details.html?id=chocolate-chip-cookies",
         reviews: "340",
         description: "The gold standard of baking: thick cookies with crispy, golden edges and incredibly soft, chewy centers packed with melted chips.",
-        ingredients: [
-            "1 cup unsalted butter, softened",
-            "3/4 cup brown sugar, packed",
-            "3/4 cup granulated white sugar",
-            "2 large eggs",
-            "1 tsp vanilla extract",
-            "2.25 cups all-purpose flour",
-            "1 tsp baking soda",
-            "1.5 cups semi-sweet chocolate chips"
-        ],
-        directions: [
-            "Preheat your oven to 375°F (190°C) and line a baking sheet with parchment paper.",
-            "In a large bowl, cream together the softened butter, brown sugar, and white sugar until the mixture is light and fluffy.",
-            "Beat in the eggs one at a time, then stir in the vanilla extract.",
-            "Gradually fold in the flour and baking soda until a dough forms, then gently fold in the chocolate chips.",
-            "Drop rounded tablespoons of dough onto the sheet 2 inches apart and bake for 9 to 11 minutes until edges turn beautifully golden."
-        ]
+        ingredients: ["1 cup unsalted butter, softened", "3/4 cup brown sugar", "3/4 cup white sugar", "2 large eggs", "1 tsp vanilla extract", "2.25 cups all-purpose flour", "1 tsp baking soda", "1.5 cups semi-sweet chocolate chips"],
+        directions: ["Preheat oven to 375°F (190°C) and line a sheet with parchment paper.", "Cream together softened butter, brown sugar, and white sugar until fluffy.", "Beat in eggs one at a time, then mix in the vanilla extract.", "Fold in flour and baking soda until combined, then fold in chocolate chips.", "Drop rounded tablespoons of dough onto sheet and bake for 9-11 minutes."]
     },
     {
         id: "tropical-smoothie",
@@ -157,19 +73,8 @@ const recipeCatalog = [
         url: "recipe-details.html?id=tropical-smoothie",
         reviews: "55",
         description: "A bright, refreshing escape in a glass made from blended mango, pineapple, strawberries, and splash of coconut milk.",
-        ingredients: [
-            "1 cup frozen mango chunks",
-            "1 cup frozen pineapple chunks",
-            "1/2 cup fresh strawberries",
-            "1 cup light coconut milk",
-            "1 banana, sliced"
-        ],
-        directions: [
-            "Pour the light coconut milk into the base of your high-speed blender first.",
-            "Add the fresh banana slices, followed by the frozen mango, pineapple, and strawberry pieces.",
-            "Secure the lid tightly and blend on HIGH for 60 seconds until completely smooth and creamy.",
-            "Pour into a chilled glass, garnish with a strawberry slice if desired, and enjoy with a straw instantly."
-        ]
+        ingredients: ["1 cup frozen mango chunks", "1 cup frozen pineapple chunks", "1/2 cup fresh strawberries", "1 cup light coconut milk", "1 banana, sliced"],
+        directions: ["Pour light coconut milk into the base of a high-speed blender.", "Add sliced banana, frozen mango, pineapple, and strawberry pieces.", "Blend on HIGH for 60 seconds until completely smooth.", "Pour into a glass and serve immediately."]
     },
     {
         id: "classic-meatloaf",
@@ -179,23 +84,8 @@ const recipeCatalog = [
         url: "recipe-details.html?id=classic-meatloaf",
         reviews: "185",
         description: "Comfort food at its finest—perfectly seasoned ground beef meatloaf brushed with a sweet, tangy ketchup and brown sugar glaze.",
-        ingredients: [
-            "2 lbs ground beef (80/20 mix)",
-            "1 cup breadcrumbs",
-            "1/2 cup whole milk",
-            "2 eggs, beaten",
-            "1 small onion, finely minced",
-            "1/2 cup ketchup (divided for glaze)",
-            "2 tbsp brown sugar",
-            "1 tbsp Worcestershire sauce"
-        ],
-        directions: [
-            "Preheat your oven to 350°F (177°C) and lightly grease a standard 9x5 inch loaf pan.",
-            "In a large bowl, mix the ground beef, breadcrumbs, milk, beaten eggs, minced onion, Worcestershire sauce, and 1/4 cup of the ketchup.",
-            "Press the meat mixture evenly into your prepared loaf pan.",
-            "Mix the remaining 1/4 cup of ketchup with the 2 tablespoons of brown sugar in a small cup, then brush it evenly over the top of the meatloaf.",
-            "Bake uncovered for 1 hour until the center reaches an internal temperature of 160°F, letting it rest 10 minutes before slicing."
-        ]
+        ingredients: ["2 lbs ground beef (80/20)", "1 cup breadcrumbs", "1/2 cup whole milk", "2 eggs, beaten", "1 small onion, minced", "1/2 cup ketchup (divided)", "2 tbsp brown sugar", "1 tbsp Worcestershire sauce"],
+        directions: ["Preheat oven to 350°F (177°C) and grease a 9x5 inch loaf pan.", "Mix beef, breadcrumbs, milk, eggs, onion, Worcestershire, and 1/4 cup ketchup.", "Press mixture into the loaf pan evenly.", "Mix remaining 1/4 cup ketchup with brown sugar and brush over the top.", "Bake for 1 hour until internal temp is 160°F. Rest 10 minutes before slicing."]
     },
     {
         id: "fluffy-pancakes",
@@ -205,23 +95,8 @@ const recipeCatalog = [
         url: "recipe-details.html?id=fluffy-pancakes",
         reviews: "295",
         description: "Light, thick, and ultra-fluffy diner-style buttermilk pancakes made completely from scratch for the ultimate weekend breakfast.",
-        ingredients: [
-            "2 cups all-purpose flour",
-            "3 tbsp sugar",
-            "2 tsp baking powder",
-            "1 tsp baking soda",
-            "1/2 tsp salt",
-            "2 cups buttermilk",
-            "2 large eggs",
-            "1/4 cup unsalted butter, melted"
-        ],
-        directions: [
-            "Whisk the flour, sugar, baking powder, baking soda, and salt together in a large mixing bowl.",
-            "In a separate bowl, whisk together the buttermilk, eggs, and melted butter.",
-            "Pour the wet ingredients into the dry ingredients and stir gently with a wooden spoon just until combined (the batter should remain slightly lumpy).",
-            "Heat a lightly greased griddle or non-stick skillet over medium heat.",
-            "Pour 1/4 cup of batter per pancake onto the hot skillet, cooking until bubbles form on top, then flip and cook until golden brown on both sides."
-        ]
+        ingredients: ["2 cups all-purpose flour", "3 tbsp sugar", "2 tsp baking powder", "1 tsp baking soda", "1/2 tsp salt", "2 cups buttermilk", "2 large eggs", "1/4 cup unsalted butter, melted"],
+        directions: ["Whisk flour, sugar, baking powder, baking soda, and salt in a large bowl.", "In a separate bowl, whisk buttermilk, eggs, and melted butter.", "Combine wet and dry ingredients; stir gently until just combined (leave lumps).", "Pour 1/4 cup batter per pancake onto a hot, greased griddle.", "Cook until bubbles form on top, flip, and cook until golden brown."]
     },
     {
         id: "classic-lasagna",
@@ -231,21 +106,172 @@ const recipeCatalog = [
         url: "recipe-details.html?id=classic-lasagna",
         reviews: "150",
         description: "Layers of seasoned rich meat sauce, lasagna noodles, creamy ricotta, and molten mozzarella baked to bubbly perfection.",
-        ingredients: [
-            "12 lasagna noodles, boiled",
-            "1 lb Italian sausage or ground beef",
-            "1 jar (24 oz) marinara sauce",
-            "1 container (15 oz) ricotta cheese",
-            "1 egg",
-            "3 cups shredded mozzarella cheese",
-            "1/2 cup grated parmesan cheese"
-        ],
-        directions: [
-            "Preheat your oven to 375°F (190°C). Brown the meat in a skillet, drain grease, and stir in your favorite marinara sauce.",
-            "In a medium bowl, mix the ricotta cheese together with the egg and half of the parmesan cheese.",
-            "In a 9x13 inch baking dish, layer 1/3 of the meat sauce, cover with 4 noodles, then spread 1/2 of the ricotta mixture and sprinkle 1 cup of mozzarella.",
-            "Repeat the layers, ending with a final top layer of noodles, meat sauce, remaining mozzarella, and parmesan cheese.",
-            "Cover tightly with aluminum foil and bake for 25 minutes, then remove the foil and bake for another 20 minutes until bubbling."
-        ]
+        ingredients: ["12 lasagna noodles, boiled", "1 lb Italian sausage", "1 jar (24 oz) marinara sauce", "1 container (15 oz) ricotta cheese", "1 egg", "3 cups shredded mozzarella", "1/2 cup parmesan cheese"],
+        directions: ["Preheat oven to 375°F (190°C). Brown meat, drain, and stir in marinara.", "Mix ricotta cheese with the egg and half of the parmesan cheese.", "Layer 1/3 meat sauce, 4 noodles, 1/2 ricotta mixture, and 1 cup mozzarella in 9x13 dish.", "Repeat layers, ending with sauce and remaining mozzarella/parm.", "Cover with foil; bake 25 mins. Remove foil; bake another 20 mins."]
+    },
+    {
+        id: "bbq-pulled-pork",
+        title: "Slow Cooker BBQ Pulled Pork",
+        category: "Slow Cooker",
+        img: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd",
+        url: "recipe-details.html?id=bbq-pulled-pork",
+        reviews: "174",
+        description: "Smoky, tender pulled pork shoulder slow-simmered and tossed in a sweet and tangy barbecue sauce layer.",
+        ingredients: ["4 lb pork shoulder roast", "2 cups BBQ sauce", "1/2 cup apple cider vinegar", "1/2 cup chicken broth", "1 tbsp brown sugar", "1 tbsp paprika", "1 tsp garlic powder"],
+        directions: ["Rub pork shoulder with brown sugar, paprika, and garlic powder.", "Place pork in slow cooker, add apple cider vinegar and chicken broth.", "Cover and cook on LOW for 8 hours until completely shreddable.", "Remove pork, shred with two forks, discard excess fat, and toss back in with BBQ sauce."]
+    },
+    {
+        id: "air-fryer-salmon",
+        title: "Garlic Butter Air Fryer Salmon",
+        category: "Air Fryer",
+        img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2",
+        url: "recipe-details.html?id=air-fryer-salmon",
+        reviews: "89",
+        description: "Perfectly flakey salmon fillets with a golden garlic butter crust, cooked effortlessly in the air fryer.",
+        ingredients: ["2 salmon fillets", "1 tbsp melted butter", "2 cloves garlic, minced", "1/2 lemon, juiced", "1/2 tsp dill", "Salt and pepper"],
+        directions: ["Preheat your air fryer to 400°F (204°C).", "Pat salmon fillets dry and season with salt and pepper.", "Mix melted butter, minced garlic, and lemon juice; brush over salmon.", "Air fry for 7-9 minutes depending on thickness, until salmon flakes easily."]
+    },
+    {
+        id: "caesar-salad",
+        title: "Classic Grilled Chicken Caesar",
+        category: "Healthy",
+        img: "https://images.unsplash.com/photo-1550304943-4f24f54ddde9",
+        url: "recipe-details.html?id=caesar-salad",
+        reviews: "112",
+        description: "Crisp romaine lettuce tossed in creamy Caesar dressing, loaded with garlic croutons and juicy grilled chicken breast chunks.",
+        ingredients: ["2 chicken breasts", "1 large bunch romaine lettuce, chopped", "1/2 cup Caesar dressing", "1/2 cup parmesan cheese shavings", "1 cup garlic croutons"],
+        directions: ["Season chicken breasts with salt, pepper, and garlic powder, then grill completely.", "Slice the grilled chicken into thin strips.", "In a large bowl, toss romaine lettuce with Caesar dressing and parmesan cheese.", "Top with croutons and grilled chicken strips, then serve immediately."]
+    },
+    {
+        id: "beef-tacos",
+        title: "Easy Weeknight Beef Tacos",
+        category: "Dinner",
+        img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47",
+        url: "recipe-details.html?id=beef-tacos",
+        reviews: "245",
+        description: "Crispy taco shells stuffed with perfectly seasoned ground beef, shredded cheddar, crisp lettuce, and fresh tomatoes.",
+        ingredients: ["1 lb ground beef", "1 packet taco seasoning", "12 hard taco shells", "1 cup shredded cheddar", "1 cup shredded lettuce", "1 tomato, diced"],
+        directions: ["Brown ground beef in a skillet over medium-high heat; drain grease.", "Add taco seasoning packet and water according to packet; simmer 5 minutes.", "Warm taco shells in the oven at 350°F for 5 minutes.", "Assemble tacos by layering beef, cheddar cheese, lettuce, and diced tomatoes."]
+    },
+    {
+        id: "baked-mac-cheese",
+        title: "Southern Baked Macaroni and Cheese",
+        category: "Dinner",
+        img: "https://images.unsplash.com/photo-1543339494-b4cd4f7ba686",
+        url: "recipe-details.html?id=baked-mac-cheese",
+        reviews: "312",
+        description: "Ultra-creamy macaroni base baked with a thick, golden blanket of melted sharp cheddar and monterey jack cheeses.",
+        ingredients: ["16 oz elbow macaroni", "4 tbsp butter", "1/4 cup flour", "2.5 cups whole milk", "2 cups sharp cheddar, shredded", "2 cups monterey jack, shredded"],
+        directions: ["Boil macaroni until al dente; drain and set aside.", "Melt butter in a pan, whisk in flour, then slowly add milk until thick.", "Stir in half of both cheeses until completely melted into a smooth sauce.", "Mix cheese sauce with macaroni, pour into a baking dish, and top with remaining cheese.", "Bake at 350°F for 20-25 minutes until bubbling and golden on top."]
+    },
+    {
+        id: "chicken-noodle-soup",
+        title: "Homestyle Chicken Noodle Soup",
+        category: "Soups",
+        img: "https://images.unsplash.com/photo-1602253057119-44d745d9b860",
+        url: "recipe-details.html?id=chicken-noodle-soup",
+        reviews: "143",
+        description: "Nourishing chicken broth loaded with tender shredded chicken, thick egg noodles, carrots, and celery stalks.",
+        ingredients: ["2 cups shredded cooked chicken", "6 cups chicken broth", "2 cups wide egg noodles", "3 carrots, sliced", "3 celery stalks, sliced", "1/2 onion, diced"],
+        directions: ["Sauté onions, carrots, and celery in a large pot with a splash of oil until soft.", "Pour in chicken broth and bring to a boil.", "Add wide egg noodles and cook for 8 minutes until tender.", "Stir in shredded chicken and simmer for an additional 5 minutes before serving."]
+    },
+    {
+        id: "french-toast",
+        title: "Classic Brioche French Toast",
+        category: "Breakfast",
+        img: "https://images.unsplash.com/photo-1484723091739-30a097e8f929",
+        url: "recipe-details.html?id=french-toast",
+        reviews: "167",
+        description: "Thick slices of rich brioche bread soaked in a spiced egg custard and griddled to golden-brown perfection.",
+        ingredients: ["1 loaf brioche bread, sliced thick", "4 large eggs", "1 cup whole milk", "1 tbsp cinnamon", "1 tsp vanilla extract", "Butter for griddle"],
+        directions: ["Whisk eggs, milk, cinnamon, and vanilla together in a shallow dish.", "Melt a pat of butter on a skillet over medium heat.", "Dip bread slices into egg mixture for 10 seconds per side.", "Cook slices on skillet for 3-4 minutes per side until beautifully browned."]
+    },
+    {
+        id: "fudgy-brownies",
+        title: "Ultimate Fudgy Brownies",
+        category: "Desserts",
+        img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c",
+        url: "recipe-details.html?id=fudgy-brownies",
+        reviews: "289",
+        description: "Rich, dense, chocolatey brownies with an ultra-fudgy center and that perfect crinkly paper-thin top crust.",
+        ingredients: ["1 cup melted butter", "2 cups sugar", "4 eggs", "1 cup cocoa powder", "1 cup all-purpose flour", "1 cup chocolate chunks"],
+        directions: ["Preheat oven to 350°F (177°C) and grease a 9x13 baking pan.", "Whisk melted butter and sugar together, then beat in eggs one by one.", "Sift in cocoa powder and flour, folding gently until just incorporated.", "Fold in chocolate chunks, spread into pan, and bake for 22-25 minutes."]
+    },
+    {
+        id: "strawberry-margarita",
+        title: "Fresh Strawberry Margarita",
+        category: "Drinks",
+        img: "https://images.unsplash.com/photo-1556855248-7128e75f29f4",
+        url: "recipe-details.html?id=strawberry-margarita",
+        reviews: "73",
+        description: "A frosty, vibrant blend of fresh sweet strawberries, lime juice, silver tequila, and a touch of agave nectar.",
+        ingredients: ["1 cup fresh strawberries, hulled", "2 oz silver tequila", "1 oz triple sec", "1 oz fresh lime juice", "1 tbsp agave nectar", "Ice"],
+        directions: ["Add strawberries, tequila, triple sec, lime juice, and agave to a blender.", "Fill blender with ice up to the liquid line.", "Blend on high until completely slushy and uniform.", "Pour into a salt-rimmed or sugar-rimmed glass and garnish with a lime wheel."]
+    },
+    {
+        id: "greek-yogurt-parfait",
+        title: "Berry Greek Yogurt Parfait",
+        category: "Healthy",
+        img: "https://images.unsplash.com/photo-1488477181946-6428a0291777",
+        url: "recipe-details.html?id=greek-yogurt-parfait",
+        reviews: "49",
+        description: "Layers of thick vanilla Greek yogurt, crunchy honey granola, and a mix of fresh blueberries and raspberries.",
+        ingredients: ["2 cups vanilla Greek yogurt", "1 cup honey almond granola", "1/2 cup fresh blueberries", "1/2 cup fresh raspberries", "2 tbsp honey"],
+        directions: ["Grab two clear serving glasses or jars.", "Drop a layer of Greek yogurt into the bottom of each glass.", "Follow with a layer of granola, then a layer of mixed fresh berries.", "Repeat layers until glass is full, then drizzle honey over the top."]
+    },
+    {
+        id: "air-fryer-french-fries",
+        title: "Air Fryer Garlic Parmesan Fries",
+        category: "Air Fryer",
+        img: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877",
+        url: "recipe-details.html?id=air-fryer-french-fries",
+        reviews: "156",
+        description: "Crispy, golden potato fries made with minimal oil, tossed in freshly grated parmesan cheese and garlic salt.",
+        ingredients: ["3 russet potatoes, cut into matchsticks", "1 tbsp olive oil", "1 tsp garlic salt", "1/4 cup parmesan cheese, grated", "1 tbsp fresh parsley, chopped"],
+        directions: ["Soak potato matchsticks in cold water for 30 minutes, then pat completely dry.", "Toss dried potatoes with olive oil and garlic salt in a large bowl.", "Place in air fryer basket and cook at 380°F for 20 minutes, shaking every 5 minutes.", "Increase temp to 400°F for 3 more minutes, then toss immediately with parmesan and parsley."]
+    },
+    {
+        id: "slow-cooker-chili",
+        title: "Hearty Slow Cooker Beef Chili",
+        category: "Slow Cooker",
+        img: "https://images.unsplash.com/photo-1541832676-9b763b0239ab",
+        url: "recipe-details.html?id=slow-cooker-chili",
+        reviews: "204",
+        description: "A thick, classic chili packed with ground beef, kidney beans, diced tomatoes, and a robust blend of warming spices.",
+        ingredients: ["2 lbs ground beef", "1 onion, diced", "2 cans kidney beans, drained", "2 cans diced tomatoes", "1 can tomato paste", "3 tbsp chili powder", "1 tbsp cumin"],
+        directions: ["Brown ground beef and diced onions in a skillet; drain grease thoroughly.", "Transfer meat and onions into the base of your slow cooker.", "Add kidney beans, diced tomatoes, tomato paste, chili powder, and cumin.", "Stir well, cover, and cook on LOW for 6-8 hours until flavors are deep."]
+    },
+    {
+        id: "lemon-lentil-soup",
+        title: "Mediterranean Lemon Lentil Soup",
+        category: "Soups",
+        img: "https://images.unsplash.com/photo-1547592180-85f173990554",
+        url: "recipe-details.html?id=lemon-lentil-soup",
+        reviews: "82",
+        description: "A hearty, plant-based soup featuring brown lentils, aromatic vegetables, and a bright finish of fresh lemon juice.",
+        ingredients: ["1.5 cups brown lentils, rinsed", "1 onion, chopped", "2 carrots, diced", "4 cups vegetable broth", "1 lemon, juiced", "2 cups fresh spinach", "1 tsp cumin"],
+        directions: ["Sauté onions and carrots in a deep pot until slightly softened.", "Add lentils, cumin, and vegetable broth; bring to a rolling boil.", "Reduce heat to low, cover, and simmer for 30 minutes until lentils are soft.", "Stir in fresh spinach and lemon juice right before turning off heat."]
+    },
+    {
+        id: "shrimp-scampi",
+        title: "Garlic Butter Shrimp Scampi",
+        category: "Dinner",
+        img: "https://images.unsplash.com/photo-1625938146369-adc83368bda7",
+        url: "recipe-details.html?id=shrimp-scampi",
+        reviews: "119",
+        description: "Plump, tender shrimp sautéed in a rich garlic, white wine, and butter sauce, tossed with a bed of angel hair pasta.",
+        ingredients: ["1 lb large shrimp, peeled and deveined", "8 oz angel hair pasta", "4 tbsp butter", "2 tbsp olive oil", "4 cloves garlic, minced", "1/4 cup white wine", "1/2 lemon, juiced"],
+        directions: ["Boil angel hair pasta according to box instructions; drain.", "Melt butter and olive oil in a skillet over medium heat; add garlic and cook 1 minute.", "Add shrimp to pan and cook for 2 minutes per side until pink.", "Pour in white wine and lemon juice, let simmer 1 minute, then toss in pasta."]
+    },
+    {
+        id: "banana-bread",
+        title: "Classic Moist Banana Bread",
+        category: "Desserts",
+        img: "https://images.unsplash.com/photo-1607958996333-41aef7caefaa",
+        url: "recipe-details.html?id=banana-bread",
+        reviews: "412",
+        description: "The absolute best way to use overripe bananas: an incredibly moist, sweet loaf with a rich caramel notes.",
+        ingredients: ["3 overripe bananas, mashed", "1/3 cup butter, melted", "3/4 cup sugar", "1 egg, beaten", "1 tsp vanilla extract", "1.5 cups all-purpose flour", "1 tsp baking soda", "Pinch of salt"],
+        directions: ["Preheat your oven to 350°F (177°C) and grease a 4x8 inch loaf pan.", "In a large bowl, mash the bananas completely using a fork.", "Stir the melted butter directly into the mashed bananas.", "Mix in the sugar, beaten egg, and vanilla extract until well blended.", "Sprinkle in flour, baking soda, and salt; stir gently just until mixed, then bake for 50 minutes."]
     }
 ];
