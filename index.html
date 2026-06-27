@@ -605,7 +605,7 @@
             
             if (sideList) {
                 sideList.innerHTML = catalog.slice(0, 4).map(r => `
-                    <a href="${r.url}" class="sidebar-item-link" target="_blank">
+                    <a href="${r.url}" class="sidebar-item-link">
                         <img src="${r.img}" class="sidebar-thumb" alt="${r.title}">
                         <div class="sidebar-text">${r.title}</div>
                     </a>
@@ -625,7 +625,7 @@
                 const target = document.getElementById(elementId);
                 if (!target) return;
                 target.innerHTML = items.map(r => `
-                    <a href="${r.url}" class="premium-card" target="_blank">
+                    <a href="${r.url}" class="premium-card">
                         <div class="img-box">
                             <img src="${r.img}" alt="${r.title}">
                             <div class="heart-toggle">♡</div>
@@ -639,51 +639,4 @@
                 `).join('');
             }
 
-            fillGrid('seasonal-picks-feed', catalog.slice(5, 8));
-            fillGrid('cookout-classics-feed', catalog.slice(0, 3));
-
-            const trendingContainer = document.getElementById('trending-feed');
-            if (trendingContainer) {
-                trendingContainer.innerHTML = catalog.slice(4, 8).map(r => `
-                    <a href="${r.url}" class="trending-row-card" target="_blank">
-                        <img src="${r.img}" class="trending-img" alt="${r.title}">
-                        <div class="trending-info">
-                            <div class="trending-meta">${r.category}</div>
-                            <div class="trending-heading">${r.title}</div>
-                        </div>
-                    </a>
-                `).join('');
-            }
-
-            const myrecipesContainer = document.getElementById('myrecipes-feed');
-            if (myrecipesContainer) {
-                myrecipesContainer.innerHTML = catalog.slice(0, 4).map(r => `
-                    <div class="myrecipes-card">
-                        <div class="img-box">
-                            <img src="${r.img}" alt="${r.title}">
-                            <div class="overlay-badge">Daily Pick</div>
-                        </div>
-                        <div class="card-details" style="flex-grow: 1;">
-                            <h4 class="card-title" style="font-size: 15px;">${r.title}</h4>
-                            <div class="stars-row">★★★★★</div>
-                        </div>
-                        <button class="save-recipe-btn" onclick="window.open('${r.url}', '_blank')">Save Recipe ♡</button>
-                    </div>
-                `).join('');
-            }
-
-            const featureContainer = document.getElementById('features-feed');
-            if (featureContainer) {
-                featureContainer.innerHTML = catalog.slice(7, 10).map(r => `
-                    <a href="${r.url}" class="feature-strip-item" target="_blank">
-                        <img src="${r.img}" class="feature-strip-img" alt="${r.title}">
-                        <div class="feature-strip-title">${r.title}</div>
-                    </a>
-                `).join('');
-            }
-        }
-
-        window.onload = buildPortalLayout;
-    </script>
-</body>
-</html>
+            fillGrid('seasonal-picks-
