@@ -21,7 +21,6 @@
             min-height: 100vh;
         }
 
-        /* Top Header */
         header {
             width: 100%;
             background: #ffffff;
@@ -57,14 +56,12 @@
         }
         nav a:hover { color: #f05a28; }
 
-        /* Main Container */
         .container {
             width: 100%;
             max-width: 1200px;
             padding: 20px;
         }
 
-        /* Section Headings */
         .section-header {
             font-size: 26px;
             font-weight: 800;
@@ -77,11 +74,8 @@
             padding-bottom: 10px;
             margin-top: 20px;
         }
-        .section-header span {
-            color: #f05a28;
-        }
+        .section-header span { color: #f05a28; }
 
-        /* Search Box Bar Layout */
         .search-utility-box {
             background: #ffffff;
             border: 1px solid #dcdad1;
@@ -138,7 +132,6 @@
             border-radius: 2px;
         }
 
-        /* Category Navigation Ribbon */
         .category-ribbon {
             background: #ffffff;
             border: 1px solid #e2e0d9;
@@ -181,7 +174,6 @@
             border-color: #f05a28;
         }
 
-        /* Premium 3-Column Card Grids */
         .standard-3-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -189,7 +181,7 @@
             margin-bottom: 45px;
         }
         @media(max-width: 768px) { .standard-3-grid { grid-template-columns: 1fr; } }
-        
+
         .premium-card {
             background: #ffffff;
             text-decoration: none;
@@ -200,7 +192,7 @@
             padding-bottom: 12px;
         }
         .img-box {
-            position: relative;
+            position: relative; /* FIX: ensures absolute children (heart-toggle, overlay-badge) anchor correctly */
             width: 100%;
             aspect-ratio: 4/3;
             background: #f0f0f0;
@@ -242,7 +234,6 @@
         .stars-row { display: flex; align-items: center; gap: 4px; font-size: 13px; color: #e67e22; margin-bottom: 4px; }
         .stars-row span { color: #767676; font-size: 12px; }
 
-        /* Asymmetric Split Banner Layout */
         .asymmetric-banner-row {
             display: grid;
             grid-template-columns: 1fr 1.6fr;
@@ -251,7 +242,7 @@
             margin-bottom: 45px;
         }
         @media(max-width: 850px) { .asymmetric-banner-row { grid-template-columns: 1fr; } }
-        
+
         .banner-sidebar-list {
             padding: 20px;
             display: flex;
@@ -260,7 +251,7 @@
             border-right: 1px solid #e2e0d9;
         }
         @media(max-width: 850px) { .banner-sidebar-list { border-right: none; border-bottom: 1px solid #e2e0d9; } }
-        
+
         .sidebar-item-link {
             display: flex;
             gap: 12px;
@@ -281,7 +272,6 @@
         .hero-banner-title { font-size: 24px; font-weight: 800; margin-top: 15px; color: #1a1a1a; }
         .hero-banner-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #eaeaea; }
 
-        /* Trending Now Layout */
         .trending-highlight-title {
             font-size: 26px;
             font-weight: 800;
@@ -298,7 +288,7 @@
             margin-bottom: 45px;
         }
         @media(max-width: 768px) { .trending-2x2-box { grid-template-columns: 1fr; } }
-        
+
         .trending-row-card {
             display: flex;
             gap: 16px;
@@ -314,7 +304,6 @@
         .trending-heading { font-size: 16px; font-weight: 700; line-height: 1.3; color: #1a1a1a; }
         .trending-heading:hover { text-decoration: underline; }
 
-        /* Horizontal Features Layout Stream */
         .horizontal-feature-stream {
             display: flex;
             flex-direction: column;
@@ -336,7 +325,6 @@
         .feature-strip-img { width: 220px; height: 130px; object-fit: cover; background: #ddd; flex-shrink: 0; }
         .feature-strip-title { font-size: 20px; font-weight: 800; line-height: 1.3; text-decoration: underline; color: #1a1a1a; }
 
-        /* MyRecipes Tray Layout Element */
         .myrecipes-tray-wrap {
             background: #f7f6f0;
             padding: 30px 20px;
@@ -359,7 +347,7 @@
         }
         @media(max-width: 900px) { .myrecipes-grid { grid-template-columns: repeat(2, 1fr); } }
         @media(max-width: 550px) { .myrecipes-grid { grid-template-columns: 1fr; } }
-        
+
         .myrecipes-card {
             background: #ffffff;
             border: 1px solid #e2e0d9;
@@ -394,7 +382,6 @@
         }
         .save-recipe-btn:hover { background: #f0f0f0; }
 
-        /* Footer Layout */
         footer {
             width: 100%;
             background: #f0ede6;
@@ -412,7 +399,7 @@
             gap: 50px;
         }
         @media(max-width: 850px) { .footer-inner { grid-template-columns: 1fr; } }
-        
+
         .footer-brand-side { display: flex; flex-direction: column; gap: 20px; }
         .newsletter-promo-box {
             border: 2px solid #f05a28;
@@ -463,15 +450,18 @@
             </nav>
         </div>
     </header>
-<section id="hero-banner" style="text-align: center; padding: 20px; background: #fff; margin-bottom: 20px;">
-        <h1>Recipe of the Day</h1>
-        <div id="daily-recipe-container">
-            <img id="daily-image" src="" alt="Recipe of the Day" style="max-width: 600px; width: 100%; border-radius: 8px;">
-            <h2 id="daily-title"></h2>
-            <a id="daily-link" href="#" style="font-weight: bold; font-size: 1.2em; display: block; margin-top: 10px;">View Full Recipe</a>
-        </div>
-    </section>
+
+    <!-- FIX: hero section moved inside .container for consistent layout -->
     <div class="container">
+
+        <section id="hero-banner" style="text-align: center; padding: 20px; background: #fff; margin-bottom: 20px;">
+            <h1>Recipe of the Day</h1>
+            <div id="daily-recipe-container">
+                <img id="daily-image" src="" alt="Recipe of the Day" style="max-width: 600px; width: 100%; border-radius: 8px;">
+                <h2 id="daily-title"></h2>
+                <a id="daily-link" href="#" style="font-weight: bold; font-size: 1.2em; display: block; margin-top: 10px;">View Full Recipe</a>
+            </div>
+        </section>
 
         <div class="search-utility-box">
             <div class="search-input-zone">
@@ -555,6 +545,7 @@
 
     </div>
 
+    <!-- FIX: only one footer block -->
     <footer>
         <div class="footer-inner">
             <div class="footer-brand-side">
@@ -600,16 +591,33 @@
 
     <script src="recipes.js"></script>
     <script>
-        function buildPortalLayout() {
-            const catalog = (typeof recipeCatalog !== 'undefined') ? recipeCatalog : [];
-            if(catalog.length === 0) {
-                console.warn("Recipe catalog array is empty or not loaded.");
+        // FIX: all catalog-dependent code is unified inside window.onload
+        // so recipes.js is guaranteed to have run before any of this executes.
+        window.onload = function () {
+            const catalog = (typeof recipeCatalog !== 'undefined' && recipeCatalog.length > 0)
+                ? recipeCatalog
+                : [];
+
+            // FIX: guard against empty catalog before touching the DOM
+            if (catalog.length === 0) {
+                console.warn("recipeCatalog is empty or recipes.js did not load.");
                 return;
             }
 
+            // --- Daily recipe of the day ---
+            const now = new Date();
+            const start = new Date(now.getFullYear(), 0, 0);
+            const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+            const dailyRecipe = catalog[dayOfYear % catalog.length];
+
+            document.getElementById('daily-image').src = dailyRecipe.img;
+            document.getElementById('daily-title').innerText = dailyRecipe.title;
+            document.getElementById('daily-link').href = dailyRecipe.url;
+
+            // --- Portal layout ---
             const sideList = document.getElementById('asymmetric-sidebar');
             const heroBox = document.getElementById('asymmetric-hero');
-            
+
             if (sideList) {
                 sideList.innerHTML = catalog.slice(0, 4).map(r => `
                     <a href="${r.url}" class="sidebar-item-link">
@@ -688,23 +696,8 @@
                     </a>
                 `).join('');
             }
-        }
-
-        window.onload = buildPortalLayout;
+        };
     </script>
-    ...
-    <footer>
-        </footer>
 
-    <script>
-        const now = new Date();
-        const start = new Date(now.getFullYear(), 0, 0);
-        const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24));
-        const dailyRecipe = recipeCatalog[dayOfYear % recipeCatalog.length];
-        
-        document.getElementById('daily-image').src = dailyRecipe.img;
-        document.getElementById('daily-title').innerText = dailyRecipe.title;
-        document.getElementById('daily-link').href = dailyRecipe.url;
-    </script>
 </body>
 </html>
