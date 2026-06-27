@@ -617,7 +617,7 @@
                 heroBox.innerHTML = `
                     <img src="${heroItem.img}" class="hero-banner-img" alt="${heroItem.title}">
                     <h2 class="hero-banner-title">${heroItem.title}</h2>
-                    <p style="font-size: 14px; color: #555; margin-top: 8px;">${r.description || ''}</p>
+                    <p style="font-size: 14px; color: #555; margin-top: 8px;">${heroItem.description || ''}</p>
                 `;
             }
 
@@ -661,4 +661,29 @@
                     <div class="myrecipes-card">
                         <div class="img-box">
                             <img src="${r.img}" alt="${r.title}">
-                            <div class="overlay
+                            <div class="overlay-badge">Daily Pick</div>
+                        </div>
+                        <div class="card-details" style="flex-grow: 1;">
+                            <h4 class="card-title" style="font-size: 15px;">${r.title}</h4>
+                            <div class="stars-row">★★★★★</div>
+                        </div>
+                        <button class="save-recipe-btn" onclick="window.location.href='${r.url}'">Save Recipe ♡</button>
+                    </div>
+                `).join('');
+            }
+
+            const featureContainer = document.getElementById('features-feed');
+            if (featureContainer) {
+                featureContainer.innerHTML = catalog.slice(7, 10).map(r => `
+                    <a href="${r.url}" class="feature-strip-item">
+                        <img src="${r.img}" class="feature-strip-img" alt="${r.title}">
+                        <div class="feature-strip-title">${r.title}</div>
+                    </a>
+                `).join('');
+            }
+        }
+
+        window.onload = buildPortalLayout;
+    </script>
+</body>
+</html>
