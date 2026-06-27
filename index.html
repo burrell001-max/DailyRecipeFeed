@@ -192,7 +192,7 @@
             padding-bottom: 12px;
         }
         .img-box {
-            position: relative; /* FIX: ensures absolute children (heart-toggle, overlay-badge) anchor correctly */
+            position: relative; /* Fixed to keep overlays pinned securely contextually */
             width: 100%;
             aspect-ratio: 4/3;
             background: #f0f0f0;
@@ -354,6 +354,7 @@
             padding: 12px;
             display: flex;
             flex-direction: column;
+            position: relative; /* FIX: Added relative positioning so .overlay-badge maps inside the card */
         }
         .overlay-badge {
             position: absolute;
@@ -423,7 +424,6 @@
         }
         .directory-col h5 {
             font-size: 14px;
-            font-weight: 800;
             text-transform: uppercase;
             margin-bottom: 12px;
             color: #1a1a1a;
@@ -451,7 +451,6 @@
         </div>
     </header>
 
-    <!-- FIX: hero section moved inside .container for consistent layout -->
     <div class="container">
 
         <section id="hero-banner" style="text-align: center; padding: 20px; background: #fff; margin-bottom: 20px;">
@@ -545,7 +544,6 @@
 
     </div>
 
-    <!-- FIX: only one footer block -->
     <footer>
         <div class="footer-inner">
             <div class="footer-brand-side">
@@ -591,16 +589,13 @@
 
     <script src="recipes.js"></script>
     <script>
-        // FIX: all catalog-dependent code is unified inside window.onload
-        // so recipes.js is guaranteed to have run before any of this executes.
         window.onload = function () {
             const catalog = (typeof recipeCatalog !== 'undefined' && recipeCatalog.length > 0)
                 ? recipeCatalog
                 : [];
 
-            // FIX: guard against empty catalog before touching the DOM
             if (catalog.length === 0) {
-                console.warn("recipeCatalog is empty or recipes.js did not load.");
+                console.warn("recipeCatalog is empty or recipes.js did not load properly.");
                 return;
             }
 
@@ -610,9 +605,9 @@
             const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24));
             const dailyRecipe = catalog[dayOfYear % catalog.length];
 
-            document.getElementById('daily-image').src = dailyRecipe.img;
-            document.getElementById('daily-title').innerText = dailyRecipe.title;
-            document.getElementById('daily-link').href = dailyRecipe.url;
+            if(document.getElementById('daily-image')) document.getElementById('daily-image').src = dailyRecipe.img || '';
+            if(document.getElementById('daily-title')) document.getElementById('daily-title').innerText = dailyRecipe.title || '';
+            if(document.getElementById('daily-link')) document.getElementById('daily-link').href = dailyRecipe.url || '#';
 
             // --- Portal layout ---
             const sideList = document.getElementById('asymmetric-sidebar');
@@ -620,9 +615,9 @@
 
             if (sideList) {
                 sideList.innerHTML = catalog.slice(0, 4).map(r => `
-                    <a href="${r.url}" class="sidebar-item-link">
-                        <img src="${r.img}" class="sidebar-thumb" alt="${r.title}">
-                        <div class="sidebar-text">${r.title}</div>
+                    <a href="${r.url || '#'}" class="sidebar-item-link">
+                        <img src="${r.img || ''}" class="sidebar-thumb" alt="${r.title || ''}">
+                        <div class="sidebar-text">${r.title || ''}</div>
                     </a>
                 `).join('');
             }
@@ -630,8 +625,8 @@
             if (heroBox) {
                 const heroItem = catalog[4] || catalog[0];
                 heroBox.innerHTML = `
-                    <img src="${heroItem.img}" class="hero-banner-img" alt="${heroItem.title}">
-                    <h2 class="hero-banner-title">${heroItem.title}</h2>
+                    <img src="${heroItem.img || ''}" class="hero-banner-img" alt="${heroItem.title || ''}">
+                    <h2 class="hero-banner-title">${heroItem.title || ''}</h2>
                     <p style="font-size: 14px; color: #555; margin-top: 8px;">${heroItem.description || ''}</p>
                 `;
             }
@@ -640,15 +635,15 @@
                 const target = document.getElementById(elementId);
                 if (!target) return;
                 target.innerHTML = items.map(r => `
-                    <a href="${r.url}" class="premium-card">
+                    <a href="${r.url || '#'}" class="premium-card">
                         <div class="img-box">
-                            <img src="${r.img}" alt="${r.title}">
+                            <img src="${r.img || ''}" alt="${r.title || ''}">
                             <div class="heart-toggle">♡</div>
                         </div>
                         <div class="card-details">
-                            <div class="card-meta">${r.category}</div>
-                            <h4 class="card-title">${r.title}</h4>
-                            <div class="stars-row">★★★★★ <span>(${r.reviews})</span></div>
+                            <div class="card-meta">${r.category || ''}</div>
+                            <h4 class="card-title">${r.title || ''}</h4>
+                            <div class="stars-row">★★★★★ <span>(${r.reviews || 0})</span></div>
                         </div>
                     </a>
                 `).join('');
@@ -660,11 +655,11 @@
             const trendingContainer = document.getElementById('trending-feed');
             if (trendingContainer) {
                 trendingContainer.innerHTML = catalog.slice(4, 8).map(r => `
-                    <a href="${r.url}" class="trending-row-card">
-                        <img src="${r.img}" class="trending-img" alt="${r.title}">
+                    <a href="${r.url || '#'}" class="trending-row-card">
+                        <img src="${r.img || ''}" class="trending-img" alt="${r.title || ''}">
                         <div class="trending-info">
-                            <div class="trending-meta">${r.category}</div>
-                            <div class="trending-heading">${r.title}</div>
+                            <div class="trending-meta">${r.category || ''}</div>
+                            <div class="trending-heading">${r.title || ''}</div>
                         </div>
                     </a>
                 `).join('');
@@ -675,14 +670,14 @@
                 myrecipesContainer.innerHTML = catalog.slice(0, 4).map(r => `
                     <div class="myrecipes-card">
                         <div class="img-box">
-                            <img src="${r.img}" alt="${r.title}">
+                            <img src="${r.img || ''}" alt="${r.title || ''}">
                             <div class="overlay-badge">Daily Pick</div>
                         </div>
                         <div class="card-details" style="flex-grow: 1;">
-                            <h4 class="card-title" style="font-size: 15px;">${r.title}</h4>
+                            <h4 class="card-title" style="font-size: 15px;">${r.title || ''}</h4>
                             <div class="stars-row">★★★★★</div>
                         </div>
-                        <button class="save-recipe-btn" onclick="window.location.href='${r.url}'">Save Recipe ♡</button>
+                        <button class="save-recipe-btn" onclick="window.location.href='${r.url || '#'}'">Save Recipe ♡</button>
                     </div>
                 `).join('');
             }
@@ -690,14 +685,13 @@
             const featureContainer = document.getElementById('features-feed');
             if (featureContainer) {
                 featureContainer.innerHTML = catalog.slice(7, 10).map(r => `
-                    <a href="${r.url}" class="feature-strip-item">
-                        <img src="${r.img}" class="feature-strip-img" alt="${r.title}">
-                        <div class="feature-strip-title">${r.title}</div>
+                    <a href="${r.url || '#'}" class="feature-strip-item">
+                        <img src="${r.img || ''}" class="feature-strip-img" alt="${r.title || ''}">
+                        <div class="feature-strip-title">${r.title || ''}</div>
                     </a>
                 `).join('');
             }
         };
     </script>
-
 </body>
 </html>
