@@ -1,73 +1,11 @@
-function renderRecipeDetails() {
-    const container = document.getElementById('content-container');
-    const catalog = (typeof recipeCatalog !== 'undefined') ? recipeCatalog : [];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recipe Details</title>
+</head>
+<body>
 
-    // 1. Grab the "id" string out of the browser URL bar (?id=ramen-salad)
-    const urlParams = new URLSearchParams(window.location.search);
-    const recipeId = urlParams.get('id');
+<h1>Loading Recipe...</h1>
 
-    if (!recipeId || catalog.length === 0) {
-        showErrorLayout(container);
-        return;
-    }
-
-    // 2. Locate the corresponding item inside the recipes array
-    const item = catalog.find(r => r.id === recipeId || (r.url && r.url.includes(`id=${recipeId}`)));
-
-    if (!item) {
-        showErrorLayout(container);
-        return;
-    }
-
-    // Update Browser Title Bar dynamically
-    document.title = `${item.title} | DailyRecipeFeed`;
-
-    // 3. Inject full layout structure safely with clean default fallbacks
-    container.innerHTML = `
-        <a href="index.html" class="back-link">← Back to Recipes</a>
-        
-        <div class="recipe-header">
-            <div class="recipe-category">${item.category || 'Recipe'}</div>
-            <h1 class="recipe-title">${item.title}</h1>
-            <div class="stars-row">★★★★★ <span>(${item.reviews || '24'} Reviews)</span></div>
-        </div>
-
-        <img src="${item.img}" class="recipe-hero-img" alt="${item.title}">
-
-        <div class="recipe-body-grid">
-            ${item.description ? `<p class="recipe-description">"${item.description}"</p>` : ''}
-            
-            <div style="margin-bottom: 25px;">
-                <h3 class="section-title">Ingredients</h3>
-                <ul style="color: #444; line-height: 1.8; padding-left: 20px;">
-                    ${item.ingredients && item.ingredients.length > 0 
-                        ? item.ingredients.map(ing => `<li>${ing}</li>`).join('') 
-                        : '<li>Ingredients coming soon!</li>'
-                    }
-                </ul>
-            </div>
-
-            <div>
-                <h3 class="section-title">Directions</h3>
-                <ol style="color: #444; line-height: 1.8; padding-left: 20px;">
-                    ${item.directions && item.directions.length > 0 
-                        ? item.directions.map(step => `<li>${step}</li>`).join('') 
-                        : '<li>Directions coming soon!</li>'
-                    }
-                </ol>
-            </div>
-        </div>
-    `;
-}
-
-function showErrorLayout(element) {
-    element.innerHTML = `
-        <a href="index.html" class="back-link">← Back to Home</a>
-        <div class="error-message">
-            <h2>Recipe Not Found</h2>
-            <p>We couldn't track down that specific formula. Double-check your pathing details inside the data configurations file.</p>
-        </div>
-    `;
-}
-
-window.onload = renderRecipeDetails;
+</body>
+</html>
