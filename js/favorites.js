@@ -22,7 +22,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Render favorites section
-    function renderFavorites() {
+    function renderFavorites()
+    // Sync heart icons on page load
+document.querySelectorAll(".heart-toggle").forEach(btn => {
+    const card = btn.closest(".premium-card");
+    if (!card) return;
+
+    const title = card.querySelector(".card-title")?.innerText;
+    const recipe = recipes.find(r => r.title === title);
+
+    if (recipe && favorites.includes(recipe.id)) {
+        btn.textContent = "♥";
+    } else {
+        btn.textContent = "♡";
+    }
+});{
         const container = document.getElementById("myrecipes-feed");
         if (!container) return;
 
