@@ -1,0 +1,22 @@
+[
+  {
+    "id": "browned-butter-gnocchi",
+    "title": "Empirical Browned Butter Gnocchi Matrix",
+    "category": "Pasta / Entree",
+    "costPerServing": "$3.14",
+    "auditedTime": "43 Min",
+    "difficultyIndex": "62/100",
+    "author": "E. Culinary Systems Engineer",
+    "lastUpdated": "2026-07-06"
+  },
+  {
+    "id": "calibrated-sourdough",
+    "title": "High-Fidelity Wild Hydration Sourdough",
+    "category": "Baking / Bread",
+    "costPerServing": "$0.87",
+    "auditedTime": "22 Hr",
+    "difficultyIndex": "89/100",
+    "author": "T. Baker Metrologist",
+    "lastUpdated": "2026-07-04"
+  }
+]

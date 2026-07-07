@@ -1,0 +1,29 @@
+body.dark-mode {
+    --white: #1A1917;
+    --cast-iron-black: #F3EEE4;
+    --parchment: #262523;
+    --soft-gray: #1E1D1B;
+    --border-color: #333230;
+}
+
+body.dark-mode .site-header {
+    background-color: rgba(26, 25, 23, 0.9);
+}
+
+body.dark-mode .yield-ledger-receipt {
+    background-color: #22211F;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .yield-ledger-receipt::after {
+    background-image: linear-gradient(-45deg, #22211F 4px, transparent 0), linear-gradient(45deg, #22211F 4px, transparent 0);
+}
+
+body.dark-mode .btn-secondary {
+    border-color: var(--border-color);
+}
+
+body.dark-mode .newsletter-form input {
+    background-color: #1A1917;
+    color: var(--cast-iron-black);
+}
